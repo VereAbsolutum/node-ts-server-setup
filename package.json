@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "start": "node dist/index.js",
-    "start:dev": "nodemon --watch src/ --exec npx ts-node src/index.ts -e ts",
+    "start:dev": "nodemon --watch src/ --exec npx ts-node -r tsconfig-paths/register src/index.ts -e ts",
     "husky:prepare": "husky install",
     "test": "jest --passWithNoTests",
     "test:watch": "npm run test --watch",
     "test:staged": "npm run test --findRelatedTests",
-    "test:push": "npm run test --coverage"
+    "test:push": "npm run test --coverage",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,8 @@
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.8",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.4"
   }
 }
